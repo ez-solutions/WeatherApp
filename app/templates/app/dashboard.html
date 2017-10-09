@@ -1,0 +1,57 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+    <div class="header clearfix">
+        <nav>
+            {%if request.session.user.email%}
+                <a href="{% url "app:logout" %}">Logout {{request.session.user.email}}</a>
+            {%else%}
+                <a href="{% url "app:login" %}">Login</a>
+            {%endif%}
+        </nav>
+    </div>
+    <div class="">
+        <h3>7-Day Forcast in: {{request.session.user.city}}</h3>
+        {% for forecast in object_list %}
+            <div >
+                <div >
+                    <b>{{ forecast.day }}</b>
+                </div>
+                <div>
+                    <ul>
+                        <li>Forecast: {{ forecast.description }}</li>
+                        <li>Temperatures:</li>
+                        <ul>
+                            <li>High: {{ forecast.temperature_high }}</li>
+                            <li>Low: {{ forecast.temperature_low }}</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        {% empty %}
+            <div>
+                <i>We don't have any forecasts yet.</i>
+            </div>
+        {% endfor %}
+    </div>
+    {% if is_paginated %}
+        <ul class="pagination pagination-lg">
+            <li>
+                {% if page_obj.has_previous %}
+                    <a href="/dashboard?page={{ page_obj.previous_page_number }}" aria-label="Previous">previous</a>
+                {% endif %}
+                </a>
+            </li>
+            <li class="active">
+                <a href="#">
+                    {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </a>
+            </li>
+            {% if page_obj.has_next %}
+                <li>
+                    <a href="/dashboard?page={{ page_obj.next_page_number }}" aria-label="Next">next</a>
+                </li>
+            {% endif %}
+        </ul>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+    <div >
+        <h1>MyWeatherSite API v1</h1>
+    </div>
+    <div class="list-group">
+    <p>
+        This is a simple API which authenticates via basic auth (for admins
+        only) and provides just two end points.
+    </p>
+    <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">Forecast End point</h4>
+        <p class="list-group-item-text">/forecasts</p>
+        <p class="list-group-item-text">/forecasts/pk</p>
+        <p class="list-group-item-text">The pk is the primary key of a forecast.</p>
+    </a>
+    <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">City End point</h4>
+        <p class="list-group-item-text">/cities</p>
+        <p class="list-group-item-text">/cities/pk</p>
+        <p class="list-group-item-text">The pk is the primary key of a city.</p>
+    </a>
+    </div>
+{% endblock %}

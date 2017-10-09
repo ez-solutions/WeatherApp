@@ -1,0 +1,24 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+    <div>
+        <nav>
+            <ul>
+                <li><a href="{% url "app:index" %}">Home</a></li>
+                <li role="presentation">
+                    {%if request.session.user.email%}
+                        <a href="{% url "app:logout" %}">Logout {{request.session.user.email}}</a>
+                    {%else%}
+                        <a href="{% url "app:login" %}">Login</a>
+                    {%endif%}
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+    <div >
+        <h1>Welcom to My Weather Site</h1>
+        <p><a href="{% url 'app:register' %}" role="button">New to this site? Click here to register.</a></p>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>MyWeatherSite</title>
+        {% block entrahead %}{% endblock %}
+    </head>
+    <body>
+        <h3>My Weather Site</h3>
+        <div >
+            <div >
+                {% block message %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endblock %}
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </body>
+</html>
