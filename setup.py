@@ -30,21 +30,14 @@ setup(
     version='0.0.1',
     description='Find out the weather in you ',
     long_description=read('README.md'),
-    # author='Mandla Mbuli',
-    # author_email='mail@mandla.me',
-    # license='BSD',
     url='',
     packages=find_packages(),
     install_requires=[
         'Django'
     ],
-    # cmdclass={'test': PyTest},
     include_package_data=True,
     classifiers=[
-        # "Private :: Do Not Upload",
         "Programming Language :: Python",
-        # "License :: OSI Approved :: BSD License",
-        # "Development Status :: 1 - Alpha",
         "Operating System :: OS Independent",
         "Framework :: Django",
         "Intended Audience :: Developers",
