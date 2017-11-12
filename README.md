@@ -92,7 +92,7 @@ Due to the time constraints and skills needed, the following items will be add i
 
 * Deploying script
 * Functional tests
-* Styling using CSS
+* ~~Styling using CSS~~
 * logging need to be covered more areas
 
 ## Known Issues
