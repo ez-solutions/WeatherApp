@@ -3,33 +3,32 @@
 {% block content %}
     <div class="header clearfix">
         <nav>
-            {%if request.session.user.email%}
-                <a href="{% url "app:logout" %}">Logout {{request.session.user.email}}</a>
-            {%else%}
-                <a href="{% url "app:login" %}">Login</a>
-            {%endif%}
+            <ul class="nav pull-right">
+                <li role="presentation">
+                    {%if request.session.user.email%}
+                        <a href="{% url "app:logout" %}">Logout {{request.session.user.email}}</a>
+                    {%else%}
+                        <a href="{% url "app:login" %}">Login</a>
+                    {%endif%}
+                </li>
+            </ul>
         </nav>
     </div>
     <div class="">
-        <h3>7-Day Forcast in: {{request.session.user.city}}</h3>
         {% for forecast in object_list %}
-            <div >
-                <div >
-                    <b>{{ forecast.day }}</b>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <b>{{ forecast.day|date }}</b>
                 </div>
-                <div>
-                    <ul>
-                        <li>Forecast: {{ forecast.description }}</li>
-                        <li>Temperatures:</li>
-                        <ul>
-                            <li>High: {{ forecast.temperature_high }}</li>
-                            <li>Low: {{ forecast.temperature_low }}</li>
-                        </ul>
-                    </ul>
+                <div class="panel-body">
+                    <p><i>{{ forecast.description }}</i></p>
+                    <b>Temperatures:</b>
+                    <span class="label label-danger">{{ forecast.temperature_high }}</span>
+                    <span class="label label-info">{{ forecast.temperature_low }}</span>
                 </div>
             </div>
         {% empty %}
-            <div>
+            <div class="well well-lg">
                 <i>We don't have any forecasts yet.</i>
             </div>
         {% endfor %}

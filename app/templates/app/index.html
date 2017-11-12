@@ -1,10 +1,9 @@
 {% extends "app/base.html" %}
 
 {% block content %}
-    <div>
+    <div class="header clearfix">
         <nav>
-            <ul>
-                <li><a href="{% url "app:index" %}">Home</a></li>
+            <ul class="nav pull-right">
                 <li role="presentation">
                     {%if request.session.user.email%}
                         <a href="{% url "app:logout" %}">Logout {{request.session.user.email}}</a>
@@ -12,13 +11,12 @@
                         <a href="{% url "app:login" %}">Login</a>
                     {%endif%}
                 </li>
-
             </ul>
         </nav>
     </div>
-    <div >
-        <h1>Welcom to My Weather Site</h1>
-        <p><a href="{% url 'app:register' %}" role="button">New to this site? Click here to register.</a></p>
-
+    <div class="jumbotron">
+        <h1>WeatherApp</h1>
+        <p class="lead">Get the latest weather forecast for the city you are interested in</p>
+        <p><a class="btn btn-lg btn-success" href="{% url 'app:register' %}" role="button">Register now</a></p>
     </div>
 {% endblock %}

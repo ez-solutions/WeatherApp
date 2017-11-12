@@ -1,12 +1,23 @@
 {% extends "app/base.html" %}
+{% load widget_tweaks %}
 
 {% block content %}
-    <nav >
-        <div >
-            <div>
-                <ul>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">WeatherApp</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
                     <li><a href="{% url 'app:index' %}">Home</a></li>
-                    <li><a href="{% url 'app:register' %}">Register</a></li>
+                    <li><a href="{% url 'app:login' %}">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -19,7 +30,7 @@
                 {% if field.errors %}
                 <div class="form-group has-error">
                     <label class="control-label" for="id_{{ field.name }}">{{ field.label }}</label>
-                    {{ field}}
+                    {{ field|attr:"class:form-control" }}
                     <span class="help-block">
                         {% for error in  field.errors %}{{ error }}{% endfor %}
                     </span>
@@ -27,14 +38,14 @@
                 {% else %}
                 <div class="form-group">
                     <label class="control-label" for="id_{{ field.name }}">{{ field.label }}</label>
-                    {{ field }}
+                    {{ field|attr:"class:form-control" }}
                     {% if field.help_text %}
                     <p class="help-block"><small>{{ field.help_text }}</small></p>
                     {% endif %}
                 </div>
                 {% endif %}
                 {% endfor %}
-                <input type="submit" value="Register" />
+                <input type="submit" class="btn btn-primary" value="Register" />
             </form>
         </div>
     </div>
